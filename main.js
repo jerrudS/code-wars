@@ -1,3 +1,16 @@
+function divisors(integer) {
+  const array = []
+  for (let i = 2; i < integer; i++) {
+    if (integer % i == 0) {
+      array.push(i)
+    }
+  }
+  if (array.length === 0) {
+    return integer + ' ' + 'is prime'
+  }
+  return array
+}
+
 function componentToHex(c) {
     if (c > 255) {
       c = 255
