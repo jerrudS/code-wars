@@ -1,3 +1,43 @@
+var nbrOfLaps = function (x, y) {
+  if ((typeof x !== 'number') || (typeof y !== 'number')) {
+    return false
+  }
+  return (!x || !y) ? 0 : Math.abs((x * y) / greatestCommonDen(x, y))
+}
+function greatestCommonDen(x, y) {
+  x = Math.abs(x)
+  y = Math.abs(y)
+  while(y) {
+    var t = y
+    y = x % y
+    x = t
+  }
+  return x
+}
+
+function rot13(message){
+  const abcArray = [0, 'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z']
+  const specialArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '.', ',', '?']
+  const messageArray = message.split('')
+  const rotArray = []
+  messageArray.forEach(char => {
+    if (specialArray.includes(char)) {
+      rotArray.push(char)
+    }
+    else if (abcArray.includes(char)) {
+      const abcIndex = abcArray.indexOf(char)
+      let rotIndex = abcIndex + 26
+      if (rotIndex > 52) {
+        rotIndex = rotIndex - 52
+      }
+      const newChar = abcArray[rotIndex]
+      rotArray.push(newChar)
+    }
+  })
+  const rotString = rotArray.join('')
+  return rotString
+}
+
 function divisors(integer) {
   const array = []
   for (let i = 2; i < integer; i++) {
