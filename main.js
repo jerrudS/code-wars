@@ -15,6 +15,28 @@ function greatestCommonDen(x, y) {
   return x
 }
 
+function permutations(string) {
+    function recur(string, prefix) {
+        if (string.length === 0) {
+            return [prefix];
+        } else {
+            var out = [];
+            for (var i = 0; i < string.length; i++) {
+                var pre = string.substring(0, i);
+                var post = string.substring(i + 1);
+                out = out.concat(recur(pre + post, string[i] + prefix));
+            }
+            return out;
+        }
+    }
+    var distinct = {};
+    recur(string, "").forEach(function(result) {
+        distinct[result] = true;
+    });
+    return Object.keys(distinct);
+}
+
+
 function rot13(message){
   const abcArray = [0, 'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z']
   const specialArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '.', ',', '?']
