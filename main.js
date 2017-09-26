@@ -1,3 +1,23 @@
+function hostName(url){
+  var hostname
+  if (url.indexOf("://") > -1) {
+    hostname = url.split('/')[2]
+  }
+  else {
+    hostname = url.split('/')[0]
+  }
+  return hostname
+}
+
+function domainName(url) {
+  let hostname = hostName(url)
+  if (hostname.indexOf('www.') > -1) {
+    hostname = hostname.replace('www.', '')
+  }
+  const domain = hostname.split('.')[0]
+  return domain
+}
+
 var nbrOfLaps = function (x, y) {
   if ((typeof x !== 'number') || (typeof y !== 'number')) {
     return false
