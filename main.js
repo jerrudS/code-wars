@@ -1,3 +1,38 @@
+function mixedFraction(s){
+  let answer = 0
+  const decimal = s
+  let numerator = 0
+  let denominator = 0
+  if (isNaN(decimal) || decimal == Infinity) {
+    answer = decimal
+  }
+  const split = decimal.toString().split('')
+  if (split[0] == 0) {
+    const zeroFrac = split.slice(2, split.length)
+    numerator = zeroFrac.join('')
+    const length = zeroFrac.length
+    denominator = Math.pow(10, length)
+  }
+  else if (!split.includes('.')) {
+    answer = s
+  }
+  else {
+    const splitNum = decimal.toString().split('.')
+    const primary = splitNum[0]
+    numerator = splitNum[1]
+    const splitStuff = splitNum[1].split('')
+    const length = splitStuff.length
+    denominator = Math.pow(10, length)
+  }
+  console.log(numerator)
+  console.log(denominator)
+  console.log(answer)
+}
+
+
+
+
+
 function hostName(url){
   var hostname
   if (url.indexOf("://") > -1) {
