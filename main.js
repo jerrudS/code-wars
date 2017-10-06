@@ -1,3 +1,34 @@
+// iterates through in a different way than instructions, but works
+var sum_pairs=function(ints, s){
+  var intsArray = ints
+  var total = s
+  var finalArray = []
+  var i = 0
+  let count = 1
+  while(i < intsArray.length && count < intsArray.length) {
+    if(intsArray[i] + intsArray[i + count] == total) {
+      finalArray.push(intsArray[i])
+      finalArray.push(intsArray[i + count])
+      return finalArray
+    }
+    else if(i + count == intsArray.length - 1) {
+      i++
+      count = 1
+    }
+
+    else {
+      count += 1
+    }
+  }
+  if(finalArray.length > 0) {
+    return finalArray
+  }
+  else {
+    return undefined
+  }
+}
+
+// unfinished
 function mixedFraction(s){
   let answer = 0
   const decimal = s
@@ -28,10 +59,6 @@ function mixedFraction(s){
   console.log(denominator)
   console.log(answer)
 }
-
-
-
-
 
 function hostName(url){
   var hostname
